@@ -93,6 +93,10 @@ public class OBOFormatOWLAPIParser extends AbstractOWLParser implements Serializ
                 // create a translator object and feed it the OBO Document
                 OWLAPIObo2Owl bridge = new OWLAPIObo2Owl(ontology.getOWLOntologyManager());
                 bridge.convert(obodoc, ontology);
+                OBODocumentFormat format = new OBODocumentFormat();
+                bridge.getIdSpaceMap().forEach(
+                    (prefix, namespace) -> format.asPrefixOWLOntologyFormat().setPrefix(prefix, namespace));
+                return format;
             } finally {
                 if (is != null) {
                     is.close();
@@ -104,7 +108,6 @@ public class OBOFormatOWLAPIParser extends AbstractOWLParser implements Serializ
         } catch (OBOFormatParserException e) {
             throw new OWLParserException(e);
         }
-        return new OBODocumentFormat();
     }
 
     @Nonnull

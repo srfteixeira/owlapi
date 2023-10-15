@@ -14,14 +14,12 @@ package org.semanticweb.owlapi.formats;
 
 import javax.annotation.Nonnull;
 
-import org.semanticweb.owlapi.model.OWLDocumentFormatImpl;
-
 /**
  * @author Matthew Horridge, The University Of Manchester, Bio-Health
  *         Informatics Group
  * @since 2.0.0
  */
-public class OBODocumentFormat extends OWLDocumentFormatImpl {
+public class OBODocumentFormat extends PrefixDocumentFormatImpl {
 
     /**
      * Key for validation parameter. Currently supports Boolean.TRUE and
@@ -29,6 +27,11 @@ public class OBODocumentFormat extends OWLDocumentFormatImpl {
      */
     public static final String VALIDATION = "obo.validation";
     private static final long serialVersionUID = 40000L;
+
+    public OBODocumentFormat() {
+        super();
+        this.clear();
+    }
 
     @Nonnull
     @Override
@@ -38,12 +41,11 @@ public class OBODocumentFormat extends OWLDocumentFormatImpl {
 
     @Override
     public boolean isPrefixOWLOntologyFormat() {
-        return false;
+        return true;
     }
 
     @Override
     public PrefixDocumentFormat asPrefixOWLOntologyFormat() {
-        throw new UnsupportedOperationException(getClass().getName()
-                + " is not a PrefixDocumentFormat");
+        return this;
     }
 }
