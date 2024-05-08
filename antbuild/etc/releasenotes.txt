@@ -1,3 +1,15 @@
+## 4.5.27 07 May 2024
+
+### Bug fixes:
+*    Fixed ontology iri parsing when annotation imports same iri
+*    Fix #1126 Handle exception when comparing integer literals.
+*    fix xsd name of XSDVocabulary.G_MONTH_DAY
+
+### Features:
+*    Fix #1112 forced use of oboInOwl namespace when translating OBO IDs.
+*    Added support for MS syntax to include all features from OWL2 DL
+
+
 ## 4.5.26 18 July 2023
 
 ### Bug fixes:
